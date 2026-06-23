@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import {
   motion,
   useMotionValue,
@@ -38,6 +39,7 @@ const products: {
   description: string;
   color: string;
   size: Size;
+  image: string;
 }[] = [
   {
     icon: Leaf,
@@ -47,6 +49,7 @@ const products: {
     description: 'Export-quality vegetables sourced from trusted suppliers, carefully selected to meet international standards.',
     color: 'emerald',
     size: 'wide',
+    image: '/products/vegetable.jpg',
   },
   {
     icon: Cherry,
@@ -56,6 +59,7 @@ const products: {
     description: 'Fresh and carefully selected fruits suitable for international markets with consistent quality.',
     color: 'rose',
     size: 'normal',
+    image: '/products/fruits.jpg',
   },
   {
     icon: Wheat,
@@ -65,6 +69,7 @@ const products: {
     description: 'Premium Indian spices and agricultural commodities — the finest from the subcontinent.',
     color: 'amber',
     size: 'normal',
+    image: '/products/spicevegetables.jpg',
   },
   {
     icon: Fish,
@@ -74,6 +79,7 @@ const products: {
     description: 'Quality seafood products processed according to export standards from coastal suppliers.',
     color: 'cyan',
     size: 'normal',
+    image: '/products/seafood.jpg',
   },
   {
     icon: Cog,
@@ -83,6 +89,7 @@ const products: {
     description: 'Ferrous and non-ferrous metal scrap sourced from reliable suppliers per customer specifications.',
     color: 'slate',
     size: 'wide',
+    image: '/products/metal.jpg',
   },
   {
     icon: Factory,
@@ -92,6 +99,7 @@ const products: {
     description: 'Various metal products for industrial and commercial applications, subject to customer requirements.',
     color: 'blue',
     size: 'normal',
+    image: '/products/industry.jpeg',
   },
   {
     icon: Recycle,
@@ -101,6 +109,7 @@ const products: {
     description: 'Selected recyclable plastic scrap materials suitable for industrial recycling purposes.',
     color: 'violet',
     size: 'normal',
+    image: '/products/plastic.jpg',
   },
   {
     icon: FileText,
@@ -110,6 +119,7 @@ const products: {
     description: 'Recovered paper products for recycling and manufacturing industries.',
     color: 'orange',
     size: 'normal',
+    image: '/products/paper.jpg',
   },
   {
     icon: RefreshCw,
@@ -119,6 +129,7 @@ const products: {
     description: 'Various recyclable materials supplied in compliance with regulations and international requirements.',
     color: 'teal',
     size: 'normal',
+    image: '/products/recycle.jpg',
   },
 ];
 
@@ -216,11 +227,11 @@ function ProductCard({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-1, 1], [8, -8]), {
+  const rotateX = useSpring(useTransform(mouseY, [-1, 1], [6, -6]), {
     stiffness: 380,
     damping: 28,
   });
-  const rotateY = useSpring(useTransform(mouseX, [-1, 1], [-8, 8]), {
+  const rotateY = useSpring(useTransform(mouseX, [-1, 1], [-6, 6]), {
     stiffness: 380,
     damping: 28,
   });
@@ -236,7 +247,7 @@ function ProductCard({
       mouseX.set((relX - 0.5) * 2);
       mouseY.set((relY - 0.5) * 2);
       if (glowRef.current) {
-        glowRef.current.style.background = `radial-gradient(220px circle at ${relX * 100}% ${relY * 100}%, ${c.glow}, transparent 70%)`;
+        glowRef.current.style.background = `radial-gradient(280px circle at ${relX * 100}% ${relY * 100}%, ${c.glow}, transparent 70%)`;
         glowRef.current.style.opacity = '1';
       }
     },
@@ -270,95 +281,102 @@ function ProductCard({
           scale: isDimmed ? 0.965 : 1,
           filter: isDimmed ? 'brightness(0.85)' : 'brightness(1)',
         }}
-        style={{ rotateX, rotateY, transformPerspective: 900 }}
+        style={{
+          rotateX,
+          rotateY,
+          transformPerspective: 900,
+          border: `1px solid ${c.border}`,
+          boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
+        }}
         transition={{ duration: 0.22 }}
-        className="group relative rounded-[18px] overflow-hidden h-full cursor-default"
+        className="group relative rounded-[18px] overflow-hidden h-full cursor-default bg-white"
       >
-        {/* Card background */}
-        <div
-          className="absolute inset-0 transition-all duration-500"
-          style={{
-            background: `linear-gradient(135deg, ${c.bg} 0%, rgba(255,255,255,0.9) 100%)`,
-            border: `1px solid ${c.border}`,
-            borderRadius: '18px',
-          }}
-        />
-
         {/* Inner mouse-tracking glow */}
         <div
           ref={glowRef}
-          className="absolute inset-0 pointer-events-none rounded-[18px] transition-opacity duration-200"
+          className="absolute inset-0 pointer-events-none z-10 rounded-[18px] transition-opacity duration-200"
           style={{ opacity: 0 }}
         />
 
-        {/* Hover border brightening */}
+        {/* Hover border glow */}
         <div
-          className="absolute inset-0 pointer-events-none rounded-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+          className="absolute inset-0 pointer-events-none rounded-[18px] z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
           style={{
-            boxShadow: `inset 0 0 0 1px ${c.border.replace('0.22', '0.5')}, 0 16px 40px rgba(0,0,0,0.1), 0 0 24px ${c.glow.replace('0.3', '0.1')}`,
+            boxShadow: `inset 0 0 0 1.5px ${c.border.replace('0.22', '0.55')}, 0 16px 40px rgba(0,0,0,0.1)`,
           }}
         />
 
-        {/* Content */}
-        <div className="relative z-10 p-6 flex flex-col h-full min-h-[220px]">
-          {/* Top row: tag + number */}
-          <div className="flex items-center justify-between mb-5">
+        {/* Product image */}
+        <div className="relative w-full overflow-hidden" style={{ height: isWide ? '200px' : '180px' }}>
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes={isWide
+              ? '(max-width: 768px) 100vw, 66vw'
+              : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            }
+          />
+          {/* Gradient overlay at bottom of image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.15) 100%)`,
+            }}
+          />
+          {/* Tag overlaid on image */}
+          <div className="absolute top-3 left-3 z-10">
             <span
-              className="text-[10px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-full"
-              style={{ background: c.tagBg, color: c.hex }}
+              className="text-[10px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-full backdrop-blur-sm"
+              style={{ background: c.tagBg, color: c.hex, border: `1px solid ${c.border}` }}
             >
               {product.tag}
             </span>
+          </div>
+          {/* Number overlaid top-right */}
+          <div className="absolute top-3 right-3 z-10">
             <span
-              className="text-4xl font-black tabular-nums select-none leading-none transition-all duration-300 group-hover:scale-110 group-hover:translate-x-1"
-              style={{ color: c.num }}
+              className="text-2xl font-black tabular-nums select-none leading-none"
+              style={{ color: 'rgba(255,255,255,0.85)', textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}
             >
               {product.number}
             </span>
           </div>
+        </div>
 
-          {/* Icon */}
-          <div
-            className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-all duration-400 group-hover:scale-110"
-            style={{
-              background: c.bg,
-              border: `1px solid ${c.border}`,
-            }}
-          >
-            <product.icon className="w-6 h-6" style={{ color: c.hex }} strokeWidth={1.75} />
+        {/* Card content below image */}
+        <div className="relative z-10 p-5 flex flex-col">
+          {/* Icon + Name row */}
+          <div className="flex items-center gap-3 mb-2">
+            <div
+              className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+              style={{ background: c.bg, border: `1px solid ${c.border}` }}
+            >
+              <product.icon className="w-4.5 h-4.5" style={{ color: c.hex }} strokeWidth={1.75} />
+            </div>
+            <h3 className="text-base font-bold text-navy-900 leading-snug">
+              {product.name}
+            </h3>
           </div>
 
-          {/* Name */}
-          <h3
-            className="text-lg font-bold mb-2.5 leading-snug transition-colors duration-300"
-            style={{ color: '#0f2548' }}
-          >
-            {product.name}
-          </h3>
-
           {/* Description */}
-          <p className="text-gray-500 text-sm leading-relaxed flex-1 group-hover:text-gray-700 transition-colors duration-300">
+          <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
             {product.description}
           </p>
 
-          {/* Animated bottom bar + arrow */}
-          <div className="mt-5 flex items-center justify-between">
+          {/* Bottom bar */}
+          <div className="mt-4 flex items-center justify-between">
             <div
-              className="h-px flex-1 transition-all duration-500"
-              style={{
-                background: `linear-gradient(90deg, ${c.hex}, transparent)`,
-                transform: 'scaleX(0)',
-                transformOrigin: 'left',
-              }}
+              className="h-px flex-1 transition-all duration-500 group-hover:opacity-100 opacity-0"
+              style={{ background: `linear-gradient(90deg, ${c.hex}, transparent)` }}
             />
-            <motion.div
-              initial={{ opacity: 0, x: -6 }}
-              whileInView={{ opacity: 0 }}
+            <div
               className="ml-3 flex items-center gap-1 text-xs font-bold transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
               style={{ color: c.hex }}
             >
               Enquire <ArrowRight className="w-3.5 h-3.5" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -451,14 +469,29 @@ function FeatureCard({ isDimmed, onHoverChange }: { isDimmed: boolean; onHoverCh
         <div
           className="absolute inset-0 rounded-[18px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-400"
           style={{
-            boxShadow: 'inset 0 0 0 1px rgba(212,168,83,0.5), 0 20px 48px rgba(0,0,0,0.1), 0 0 40px rgba(212,168,83,0.08)',
+            boxShadow: 'inset 0 0 0 1.5px rgba(212,168,83,0.5), 0 20px 48px rgba(0,0,0,0.08)',
           }}
         />
 
         {/* Content */}
-        <div className="relative z-10 p-7 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-8">
-          {/* Left */}
-          <div className="flex-1">
+        <div className="relative z-10 flex flex-col md:flex-row items-stretch">
+          {/* Image */}
+          <div className="relative md:w-72 lg:w-80 flex-shrink-0 overflow-hidden" style={{ minHeight: '220px' }}>
+            <Image
+              src="/products/custome.png"
+              alt="Customized Sourcing"
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(to right, transparent 70%, rgba(255,255,255,0.6) 100%)' }}
+            />
+          </div>
+
+          {/* Text content */}
+          <div className="flex-1 p-7 md:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-[10px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-full bg-gold-400/12 text-gold-500 border border-gold-400/25">
                 Service
@@ -481,32 +514,30 @@ function FeatureCard({ isDimmed, onHoverChange }: { isDimmed: boolean; onHoverCh
               </div>
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {['Any Product', 'Any Quantity', 'Any Market', 'Custom Specs'].map((t) => (
-                <span
-                  key={t}
-                  className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-500 border border-gray-200 group-hover:border-gold-400/25 group-hover:text-gray-700 transition-all duration-300"
-                >
-                  {t}
-                </span>
-              ))}
+            {/* Tags + CTA row */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap gap-2">
+                {['Any Product', 'Any Quantity', 'Any Market', 'Custom Specs'].map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-500 border border-gray-200 group-hover:border-gold-400/25 group-hover:text-gray-700 transition-all duration-300"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn-primary glow-gold text-sm group/btn ml-auto flex-shrink-0"
+              >
+                Discuss Your Needs
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </a>
             </div>
-          </div>
-
-          {/* Right CTA */}
-          <div className="flex-shrink-0">
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="btn-primary glow-gold text-base group/btn"
-            >
-              Discuss Your Needs
-              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </a>
           </div>
         </div>
       </motion.div>
@@ -616,7 +647,7 @@ export default function Products() {
         {/* Product grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((product, i) => (

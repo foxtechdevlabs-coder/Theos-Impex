@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown, Star, TrendingUp, Users } from 'lucide-react';
 
@@ -56,6 +57,23 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-navy-950"
     >
+      {/* Hero background image */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none">
+        <Image
+          src="/products/hero.jpg"
+          alt="Hero background"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* Dark overlay to keep text readable */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(135deg, rgba(2,8,23,0.82) 0%, rgba(6,17,31,0.72) 50%, rgba(2,8,23,0.85) 100%)' }}
+        />
+      </motion.div>
+
       {/* Animated gradient orbs */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none">
         {/* Gold orb — top right */}
