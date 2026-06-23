@@ -137,7 +137,7 @@ export default function Hero() {
         >
           <span className="section-tag">
             <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse-soft" />
-            Trusted Global Trade Partner · Since Kanyakumari, India
+            Trusted Global Trade Partner · On Kanyakumari, India
           </span>
         </motion.div>
 

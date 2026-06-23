@@ -69,7 +69,7 @@ export default function Navigation() {
               priority
             />
             <Image
-              src="/products/logotext.png"
+              src="/products/logoletter.png"
               alt="THEOS IMPEX"
               width={120}
               height={44}

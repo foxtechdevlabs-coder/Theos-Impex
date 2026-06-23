@@ -102,7 +102,7 @@ export default function Footer() {
               />
               <div className="bg-white rounded-lg px-2 py-1 inline-flex items-center">
                 <Image
-                  src="/products/logotext.png"
+                  src="/products/logoletter.png"
                   alt="THEOS IMPEX"
                   width={110}
                   height={40}
