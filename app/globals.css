@@ -348,6 +348,11 @@ body {
   z-index: 0;
 }
 
+/* ─── Brand Font ─────────────────────────────────────────────────────── */
+.font-cinzel {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+}
+
 /* ─── Light Theme Utilities ──────────────────────────────────────────── */
 
 /* Navigation — white */

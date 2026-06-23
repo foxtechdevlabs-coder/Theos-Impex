@@ -223,6 +223,102 @@ export default function About() {
             </motion.div>
           </div>
         </div>
+
+        {/* Proprietor Bio */}
+        <div className="mt-16">
+          <FadeUp delay={0.1}>
+            <div
+              className="relative rounded-3xl overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, #0f2548 0%, #1b3d70 60%, #0f2548 100%)' }}
+            >
+              {/* Gold top accent bar */}
+              <div
+                className="h-1 w-full"
+                style={{ background: 'linear-gradient(90deg, #b8893a 0%, #f5c842 50%, #b8893a 100%)' }}
+              />
+
+              {/* Decorative glows */}
+              <div
+                className="absolute top-0 right-0 w-96 h-96 pointer-events-none"
+                style={{ background: 'radial-gradient(circle at 80% 20%, rgba(212,168,83,0.14) 0%, transparent 65%)' }}
+              />
+              <div
+                className="absolute bottom-0 left-0 w-64 h-64 pointer-events-none"
+                style={{ background: 'radial-gradient(circle at 20% 80%, rgba(34,211,238,0.07) 0%, transparent 60%)' }}
+              />
+
+              <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-12">
+                {/* Section label */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="h-px w-10 flex-shrink-0" style={{ background: 'rgba(212,168,83,0.5)' }} />
+                  <span
+                    className="text-xs font-bold tracking-[0.2em] uppercase flex-shrink-0"
+                    style={{ color: '#d4a853' }}
+                  >
+                    About the Proprietor
+                  </span>
+                  <div className="h-px flex-1" style={{ background: 'rgba(212,168,83,0.15)' }} />
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
+                  {/* Avatar */}
+                  <div className="flex-shrink-0 flex flex-col items-center gap-3">
+                    <div
+                      className="w-24 h-24 rounded-full flex items-center justify-center text-xl font-black text-navy-900 font-cinzel"
+                      style={{
+                        background: 'linear-gradient(135deg, #d4a853 0%, #f5c842 100%)',
+                        boxShadow: '0 0 32px rgba(212,168,83,0.35)',
+                      }}
+                    >
+                      AKA
+                    </div>
+                    <span
+                      className="px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
+                      style={{
+                        background: 'rgba(212,168,83,0.12)',
+                        border: '1px solid rgba(212,168,83,0.3)',
+                        color: '#d4a853',
+                      }}
+                    >
+                      Est. 2026
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 text-center sm:text-left">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2 justify-center sm:justify-start flex-wrap">
+                      <h3 className="text-2xl sm:text-3xl font-black text-white font-cinzel">
+                        Ajin Kumar Anitha
+                      </h3>
+                      <span
+                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase self-center"
+                        style={{
+                          background: 'rgba(212,168,83,0.12)',
+                          border: '1px solid rgba(212,168,83,0.3)',
+                          color: '#d4a853',
+                        }}
+                      >
+                        Founder &amp; Proprietor
+                      </span>
+                    </div>
+                    <p
+                      className="text-sm font-semibold mb-5 tracking-wide uppercase"
+                      style={{ color: '#d4a853', opacity: 0.75 }}
+                    >
+                      B.Tech Graduate · THEOS IMPEX
+                    </p>
+                    <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto sm:mx-0">
+                      Ajin Kumar Anitha is the Founder and Proprietor of THEOS IMPEX, established
+                      in 2026. A Bachelor of Technology (B.Tech) graduate, he combines technical
+                      knowledge with an entrepreneurial vision to build a company focused on
+                      excellence in international trade.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );

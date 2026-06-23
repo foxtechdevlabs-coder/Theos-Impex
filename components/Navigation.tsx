@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -57,19 +58,24 @@ export default function Navigation() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-3 group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shadow-lg group-hover:shadow-gold-400/40 transition-shadow duration-300">
-              <Globe className="w-4.5 h-4.5 text-navy-950" strokeWidth={2.5} />
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-lg font-black tracking-tight text-navy-900">
-                THEOS<span className="gradient-text">IMPEX</span>
-              </span>
-              <span className="text-[9px] font-semibold tracking-[0.22em] text-gray-400 uppercase">
-                Global Trade
-              </span>
-            </div>
+            <Image
+              src="/products/logo.png"
+              alt="THEOS IMPEX emblem"
+              width={48}
+              height={48}
+              className="h-12 w-12 object-contain flex-shrink-0 transition-opacity duration-200 group-hover:opacity-85"
+              priority
+            />
+            <Image
+              src="/products/logotext.png"
+              alt="THEOS IMPEX"
+              width={120}
+              height={44}
+              className="h-10 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
+              priority
+            />
           </button>
 
           {/* Desktop nav */}

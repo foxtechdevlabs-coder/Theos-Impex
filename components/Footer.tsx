@@ -1,7 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Globe, Mail, Phone, MessageSquare, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MessageSquare, MapPin, ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'About Us', href: '#about' },
@@ -90,18 +91,23 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-2.5 group mb-5"
+              className="flex items-center gap-3 mb-5 group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
-                <Globe className="w-4.5 h-4.5 text-navy-950" strokeWidth={2.5} />
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-lg font-black text-white">
-                  THEOS<span className="gradient-text">IMPEX</span>
-                </span>
-                <span className="text-[9px] font-semibold tracking-[0.22em] text-slate-400 uppercase">
-                  Global Trade
-                </span>
+              <Image
+                src="/products/logo.png"
+                alt="THEOS IMPEX emblem"
+                width={44}
+                height={44}
+                className="h-11 w-11 object-contain flex-shrink-0 transition-opacity duration-200 group-hover:opacity-80"
+              />
+              <div className="bg-white rounded-lg px-2 py-1 inline-flex items-center">
+                <Image
+                  src="/products/logotext.png"
+                  alt="THEOS IMPEX"
+                  width={110}
+                  height={40}
+                  className="h-9 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80"
+                />
               </div>
             </button>
 

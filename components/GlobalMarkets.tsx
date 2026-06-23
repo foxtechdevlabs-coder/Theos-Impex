@@ -222,19 +222,21 @@ export default function GlobalMarkets() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-3 relative"
           >
-            <div className="glass-card rounded-3xl p-4 relative overflow-hidden">
-              <div
-                className="absolute inset-0 pointer-events-none rounded-3xl"
-                style={{
-                  background:
-                    'radial-gradient(ellipse at center, rgba(34,211,238,0.04) 0%, transparent 70%)',
-                }}
-              />
-              <div className="relative z-10 aspect-[9/5]">
-                <WorldMapSVG />
+            <div className="glass-card rounded-3xl overflow-hidden relative">
+              <div className="w-full h-[340px] sm:h-[420px]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3947.263348973036!2d77.24422077501129!3d8.375736191661776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMjInMzIuNyJOIDc3wrAxNCc0OC41IkU!5e0!3m2!1sen!2sin!4v1782209740653!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="THEOS IMPEX Office Location"
+                />
               </div>
               {/* India label */}
-              <div className="absolute bottom-5 right-5 glass-card-gold rounded-xl px-3 py-2 flex items-center gap-2">
+              <div className="absolute bottom-4 right-4 glass-card-gold rounded-xl px-3 py-2 flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-gold-400" />
                 <span className="text-xs font-bold text-gold-400">THEOS IMPEX Origin · India</span>
               </div>
@@ -267,6 +269,7 @@ export default function GlobalMarkets() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
