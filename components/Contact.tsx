@@ -33,13 +33,7 @@ const contactInfo = [
     href: 'https://maps.google.com/?q=Arumanai+Kanyakumari+Tamil+Nadu',
     color: 'rose',
   },
-  {
-    icon: Clock,
-    label: 'Business Hours',
-    value: 'Monday – Saturday · 9:00 AM – 6:00 PM',
-    href: null,
-    color: 'slate',
-  },
+
 ];
 
 const colorMap: Record<string, string> = {
@@ -117,7 +111,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-xl mx-auto text-gray-500 text-lg"
           >
-            Looking for a reliable import-export partner? Contact THEOS IMPEX today
+            Looking for a reliable import-export partner? Contact <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span> today
             to discuss your sourcing and supply requirements.
           </motion.p>
         </div>
@@ -306,9 +300,7 @@ export default function Contact() {
                     )}
                   </button>
 
-                  <p className="text-center text-gray-400 text-xs">
-                    We respond within 24 business hours · Mon–Sat 9AM–6PM IST
-                  </p>
+                  
                 </form>
               )}
             </div>

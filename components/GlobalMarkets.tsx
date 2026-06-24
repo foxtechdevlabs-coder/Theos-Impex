@@ -207,7 +207,7 @@ export default function GlobalMarkets() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-2xl mx-auto text-slate-400 text-lg"
           >
-            THEOS IMPEX builds strong partnerships across continents, bringing
+            <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span> builds strong partnerships across continents, bringing
             India's finest products to markets that value quality and reliability.
           </motion.p>
         </div>
@@ -238,7 +238,7 @@ export default function GlobalMarkets() {
               {/* India label */}
               <div className="absolute bottom-4 right-4 glass-card-gold rounded-xl px-3 py-2 flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-gold-400" />
-                <span className="text-xs font-bold text-gold-400">THEOS IMPEX Origin · India</span>
+                <span className="text-xs font-bold text-gold-400 font-cinzel">THEOS IMPEX</span><span className="text-xs font-bold text-gold-400"> Origin · India</span>
               </div>
             </div>
           </motion.div>

@@ -73,7 +73,7 @@ export default function Navigation() {
               alt="THEOS IMPEX"
               width={120}
               height={44}
-              className="h-10 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
+              className="h-7 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
               priority
             />
           </button>

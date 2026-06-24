@@ -85,13 +85,13 @@ export default function About() {
             <FadeUp delay={0.1}>
               <h2 className="text-4xl sm:text-5xl font-black text-navy-900 leading-tight mb-6">
                 Welcome to{' '}
-                <span className="gradient-text">THEOS IMPEX</span>
+                <span className="gradient-text font-cinzel">THEOS IMPEX</span>
               </h2>
             </FadeUp>
 
             <FadeUp delay={0.2}>
               <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                THEOS IMPEX is a dynamic import and export company dedicated to
+                <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span> is a dynamic import and export company dedicated to
                 facilitating international trade with professionalism and excellence.
                 We specialize in sourcing and supplying quality products that meet
                 global standards while building long-term relationships with customers
@@ -204,7 +204,7 @@ export default function About() {
                   <br />
                   Connecting Markets.&rdquo;
                 </div>
-                <p className="text-gray-400 text-sm mt-4">— THEOS IMPEX</p>
+                <p className="text-gray-400 text-sm mt-4">— <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span></p>
               </div>
             </motion.div>
 
@@ -260,60 +260,34 @@ export default function About() {
                   <div className="h-px flex-1" style={{ background: 'rgba(212,168,83,0.15)' }} />
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
-                  {/* Avatar */}
-                  <div className="flex-shrink-0 flex flex-col items-center gap-3">
-                    <div
-                      className="w-24 h-24 rounded-full flex items-center justify-center text-xl font-black text-navy-900 font-cinzel"
-                      style={{
-                        background: 'linear-gradient(135deg, #d4a853 0%, #f5c842 100%)',
-                        boxShadow: '0 0 32px rgba(212,168,83,0.35)',
-                      }}
-                    >
-                      AKA
-                    </div>
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2 flex-wrap">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-geist-sans), Georgia, serif', letterSpacing: '-0.01em' }}>
+                      Ajin Kumar Anitha
+                    </h3>
                     <span
-                      className="px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
+                      className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase self-start sm:self-center"
                       style={{
                         background: 'rgba(212,168,83,0.12)',
                         border: '1px solid rgba(212,168,83,0.3)',
                         color: '#d4a853',
                       }}
                     >
-                      Est. 2026
+                      Founder &amp; Proprietor
                     </span>
                   </div>
-
-                  {/* Content */}
-                  <div className="flex-1 text-center sm:text-left">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2 justify-center sm:justify-start flex-wrap">
-                      <h3 className="text-2xl sm:text-3xl font-black text-white font-cinzel">
-                        Ajin Kumar Anitha
-                      </h3>
-                      <span
-                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase self-center"
-                        style={{
-                          background: 'rgba(212,168,83,0.12)',
-                          border: '1px solid rgba(212,168,83,0.3)',
-                          color: '#d4a853',
-                        }}
-                      >
-                        Founder &amp; Proprietor
-                      </span>
-                    </div>
-                    <p
-                      className="text-sm font-semibold mb-5 tracking-wide uppercase"
-                      style={{ color: '#d4a853', opacity: 0.75 }}
-                    >
-                      B.Tech Graduate · THEOS IMPEX
-                    </p>
-                    <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto sm:mx-0">
-                      Ajin Kumar Anitha is the Founder and Proprietor of THEOS IMPEX, established
-                      in 2026. A Bachelor of Technology (B.Tech) graduate, he combines technical
-                      knowledge with an entrepreneurial vision to build a company focused on
-                      excellence in international trade.
-                    </p>
-                  </div>
+                  <p
+                    className="text-sm font-medium mb-6 tracking-widest uppercase"
+                    style={{ color: '#d4a853', opacity: 0.7 }}
+                  >
+                    B.Tech Graduate &nbsp;·&nbsp; Est. 2026
+                  </p>
+                  <p className="text-slate-300 leading-[1.85] max-w-3xl text-base" style={{ fontFamily: 'var(--font-geist-sans), Georgia, serif' }}>
+                    Ajin Kumar Anitha is the Founder and Proprietor of <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span>, established
+                    in 2026. A Bachelor of Technology (B.Tech) graduate, he combines technical
+                    knowledge with an entrepreneurial vision to build a company focused on
+                    excellence in international trade.
+                  </p>
                 </div>
               </div>
             </div>

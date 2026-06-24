@@ -68,7 +68,7 @@ export default function Footer() {
                 Ready to expand your trade?
               </h3>
               <p className="text-slate-400">
-                Partner with THEOS IMPEX for reliable sourcing and global market access.
+                Partner with <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span> for reliable sourcing and global market access.
               </p>
             </div>
             <div className="relative z-10 flex gap-3 flex-shrink-0">
@@ -186,13 +186,7 @@ export default function Footer() {
                   Tamil Nadu, India
                 </p>
               </div>
-              <div className="glass-card rounded-xl px-4 py-3">
-                <p className="text-xs text-slate-500 mb-1 font-semibold uppercase tracking-wider">
-                  Business Hours
-                </p>
-                <p className="text-slate-300 text-sm font-medium">Mon – Sat</p>
-                <p className="text-slate-400 text-sm">9:00 AM – 6:00 PM IST</p>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -202,7 +196,7 @@ export default function Footer() {
       <div className="relative z-10 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-slate-600 text-sm text-center sm:text-left">
-            © {new Date().getFullYear()} THEOS IMPEX. All rights reserved.
+            © {new Date().getFullYear()} <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span>. All rights reserved.
           </p>
           <p className="text-slate-700 text-sm text-center sm:text-right italic">
             "Delivering Quality. Building Trust. Connecting Markets."
