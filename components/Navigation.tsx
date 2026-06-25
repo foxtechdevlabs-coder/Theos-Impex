@@ -79,7 +79,7 @@ export default function Navigation() {
           </button>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               const id = link.href.replace('#', '');
               const isActive = activeSection === id;
@@ -108,9 +108,18 @@ export default function Navigation() {
 
           {/* CTA + mobile toggle */}
           <div className="flex items-center gap-3">
+            <div className="hidden lg:block">
+              <button
+                onClick={() => scrollTo('#contact')}
+                className="btn-dark text-sm py-2.5 px-5"
+              >
+                Get in Touch
+              </button>
+            </div>
+
             <button
               onClick={() => setMobileOpen((o) => !o)}
-              className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center text-gray-600 hover:text-navy-900 hover:bg-gray-100 transition-colors"
+              className="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center text-gray-600 hover:text-navy-900 hover:bg-gray-100 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
