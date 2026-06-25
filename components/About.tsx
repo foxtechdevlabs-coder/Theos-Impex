@@ -208,19 +208,7 @@ export default function About() {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.7, delay: 0.3, ease }}
-              className="light-card rounded-2xl p-5 flex items-center gap-4"
-            >
-              <div className="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse-soft flex-shrink-0" />
-              <div>
-                <p className="text-navy-900 font-semibold text-sm">Business Hours</p>
-                <p className="text-gray-500 text-sm">Monday – Saturday · 9:00 AM – 6:00 PM IST</p>
-              </div>
-            </motion.div>
+            
           </div>
         </div>
 

@@ -109,13 +109,6 @@ export default function Navigation() {
           {/* CTA + mobile toggle */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => scrollTo('#contact')}
-              className="hidden sm:flex btn-dark text-sm py-2.5 px-5"
-            >
-              Get in Touch
-            </button>
-
-            <button
               onClick={() => setMobileOpen((o) => !o)}
               className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center text-gray-600 hover:text-navy-900 hover:bg-gray-100 transition-colors"
               aria-label="Toggle menu"

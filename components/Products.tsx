@@ -174,7 +174,7 @@ function CategoryFilter({
   };
 
   return (
-    <div className="flex items-center gap-2 overflow-x-auto scroll-hide pb-1">
+    <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       {CATEGORIES.map((cat) => (
         <button
           key={cat}
@@ -637,9 +637,9 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3, ease }}
-          className="flex justify-center mb-10"
+          className="flex justify-center mb-10 w-full"
         >
-          <div className="light-card rounded-2xl px-3 py-2 inline-block">
+          <div className="light-card rounded-2xl px-3 py-2 max-w-full overflow-hidden">
             <CategoryFilter selected={activeCategory} onSelect={setActiveCategory} />
           </div>
         </motion.div>
