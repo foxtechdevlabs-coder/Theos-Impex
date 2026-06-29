@@ -249,12 +249,12 @@ export default function About() {
                 </div>
 
                 <div>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2 flex-wrap">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4 flex-wrap">
                     <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-geist-sans), Georgia, serif', letterSpacing: '-0.01em' }}>
                       Ajin Kumar Anitha
                     </h3>
                     <span
-                      className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase self-start sm:self-center"
+                      className="inline-flex items-center self-start px-3 py-2 rounded-full text-xs font-semibold tracking-wider uppercase"
                       style={{
                         background: 'rgba(212,168,83,0.12)',
                         border: '1px solid rgba(212,168,83,0.3)',
@@ -264,12 +264,6 @@ export default function About() {
                       Founder &amp; Proprietor
                     </span>
                   </div>
-                  <p
-                    className="text-sm font-medium mb-6 tracking-widest uppercase"
-                    style={{ color: '#d4a853', opacity: 0.7 }}
-                  >
-                    B.Tech Graduate &nbsp;·&nbsp; Est. 2026
-                  </p>
                   <p className="text-slate-300 leading-[1.85] max-w-3xl text-base" style={{ fontFamily: 'var(--font-geist-sans), Georgia, serif' }}>
                     Ajin Kumar Anitha is the Founder and Proprietor of <span className="font-cinzel" style={{ color: '#d4a853' }}>THEOS IMPEX</span>, established
                     in 2026. A Bachelor of Technology (B.Tech) graduate, he combines technical
