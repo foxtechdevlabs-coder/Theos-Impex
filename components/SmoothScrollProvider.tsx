@@ -15,7 +15,11 @@ export default function SmoothScrollProvider({
         duration: 1.2,
         smoothWheel: true,
         wheelMultiplier: 0.9,
-        touchMultiplier: 1.5,
+        // touchMultiplier: 0 — do not intercept native touch scroll on Android/iOS.
+        // Lenis smooth-wheel runs on desktop; touch devices use native scroll so
+        // the browser's IntersectionObserver stays in sync and framer-motion
+        // whileInView animations trigger correctly on Android.
+        touchMultiplier: 0,
       }}
     >
       {children}

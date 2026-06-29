@@ -265,9 +265,9 @@ function ProductCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 48, clipPath: 'inset(100% 0% 0% 0% round 18px)' }}
-      whileInView={{ opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 18px)' }}
-      viewport={{ once: true, margin: '-60px' }}
+      initial={{ opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.75, delay: index * 0.065, ease }}
       className={isWide ? 'col-span-1 md:col-span-2' : ''}
     >
@@ -417,9 +417,9 @@ function FeatureCard({ isDimmed, onHoverChange }: { isDimmed: boolean; onHoverCh
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 48, clipPath: 'inset(100% 0% 0% 0% round 18px)' }}
-      whileInView={{ opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 18px)' }}
-      viewport={{ once: true, margin: '-60px' }}
+      initial={{ opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.8, delay: 0.55, ease }}
       className="col-span-1 md:col-span-2 lg:col-span-3"
     >
