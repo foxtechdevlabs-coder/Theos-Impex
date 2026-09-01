@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 
 const contactInfo = [
   {
@@ -51,21 +52,17 @@ export default function Contact() {
     phone: '',
     message: '',
   });
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setSending(false);
-    setSent(true);
-  };
+  const [state, handleSubmit, resetForm] = useForm('xppzpepa');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSendAnother = () => {
+    resetForm();
+    setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
   return (
@@ -100,7 +97,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl font-black text-navy-900 leading-tight mb-5"
           >
-            Let's{' '}
+            Let&apos;s{' '}
             <span className="gradient-text">Start Trading</span>
           </motion.h2>
 
@@ -196,7 +193,7 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="light-card rounded-3xl p-8">
-              {sent ? (
+              {state.succeeded ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -211,7 +208,7 @@ export default function Contact() {
                     within 24 business hours.
                   </p>
                   <button
-                    onClick={() => { setSent(false); setFormData({ name: '', email: '', phone: '', message: '' }); }}
+                    onClick={handleSendAnother}
                     className="mt-6 btn-outline-light text-sm py-2.5 px-6"
                   >
                     Send Another
@@ -232,6 +229,12 @@ export default function Contact() {
                       placeholder="Your full name"
                       className="input-field-light"
                     />
+                    <ValidationError
+                      prefix="Name"
+                      field="name"
+                      errors={state.errors}
+                      className="mt-1.5 text-xs text-rose-500"
+                    />
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-5">
@@ -247,6 +250,12 @@ export default function Contact() {
                         required
                         placeholder="you@company.com"
                         className="input-field-light"
+                      />
+                      <ValidationError
+                        prefix="Email"
+                        field="email"
+                        errors={state.errors}
+                        className="mt-1.5 text-xs text-rose-500"
                       />
                     </div>
                     <div>
@@ -277,14 +286,20 @@ export default function Contact() {
                       placeholder="Tell us about your sourcing requirements, the products you're interested in, and target markets..."
                       className="input-field-light resize-none"
                     />
+                    <ValidationError
+                      prefix="Message"
+                      field="message"
+                      errors={state.errors}
+                      className="mt-1.5 text-xs text-rose-500"
+                    />
                   </div>
 
                   <button
                     type="submit"
-                    disabled={sending}
+                    disabled={state.submitting}
                     className="btn-primary w-full justify-center text-base py-3.5"
                   >
-                    {sending ? (
+                    {state.submitting ? (
                       <>
                         <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -300,7 +315,31 @@ export default function Contact() {
                     )}
                   </button>
 
-                  
+                  {state.errors && (
+                    <div
+                      role="alert"
+                      className="flex items-start gap-3 rounded-xl border border-rose-400/30 bg-rose-400/8 p-4"
+                    >
+                      <AlertCircle className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" />
+                      <div className="text-sm text-navy-900">
+                        <p className="font-semibold">Your message couldn&apos;t be sent.</p>
+                        <p className="text-gray-500 mt-1">
+                          Please try again, or email us directly at{' '}
+                          <a
+                            href="mailto:info@theosimpex.com"
+                            className="text-gold-500 font-medium underline"
+                          >
+                            info@theosimpex.com
+                          </a>
+                          .
+                        </p>
+                        <ValidationError
+                          errors={state.errors}
+                          className="mt-1 text-xs text-rose-500"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </form>
               )}
             </div>
